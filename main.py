@@ -1,18 +1,20 @@
 import discord
 import os
+from dotenv import load_dotenv
 
+load_dotenv('TOKEN.env')
 client = discord.Client()
 
 @client.event
 async def on_ready():
-    print('Ready ({o.user})'.format(client))
+    print('Ready ({0.user})'.format(client))
 
 @client.event
 async def on_message(message):
     if message.author == client.user:
         return
 
-    if message.content.startwith('/hello'):
+    if message.content.startswith('/hello'):
         await message.channel.send('Hello')
 
 client.run(os.getenv('TOKEN'))
