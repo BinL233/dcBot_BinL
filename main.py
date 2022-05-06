@@ -1,9 +1,17 @@
+from urllib import response
 import discord
 import os
 from dotenv import load_dotenv
+import requests
+import json
+import random
+import get_spotify
 
 load_dotenv('TOKEN.env')
 client = discord.Client()
+
+
+
 
 @client.event
 async def on_ready():
@@ -15,6 +23,10 @@ async def on_message(message):
         return
 
     if message.content.startswith('/hello'):
-        await message.channel.send('Hello')
+        await message.channel.send('Hello!')
+
+    elif message.content.startswith('/random song'):
+        rdsong = get_spotify.get_track()
+        await message.channel.send(rdsong)
 
 client.run(os.getenv('TOKEN'))
