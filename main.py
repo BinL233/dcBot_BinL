@@ -26,6 +26,7 @@ async def on_message(message):
 
     elif message.content.startswith('/random song'):
         rdsong = get_spotify.get_track()
+
         await message.channel.send(rdsong)
 
     elif message.content.startswith('/help'):
@@ -36,6 +37,7 @@ async def on_message(message):
 
     elif message.content.startswith('/random video'):
         rdvideo = get_youtube.get_url()
+ 
         await message.channel.send(rdvideo)        
 
 client.run(os.getenv('TOKEN'))

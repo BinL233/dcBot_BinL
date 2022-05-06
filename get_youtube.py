@@ -9,13 +9,17 @@ headers = {
 url_youtube = "https://www.youtuberandom.com/"
 
 def get_url():
-    with requests.request('GET', url_youtube, headers = headers) as res:
-        content = res.text
-        html = etree.HTML(content)
-        data = ''.join(html.xpath('//meta[@property="og:video:url" and @content]/@content'))
-        dataList = list(data)
-        dataList = dataList[-11:]
+    try:
+        with requests.request('GET', url_youtube, headers = headers) as res:
+            content = res.text
+            html = etree.HTML(content)
+            data = ''.join(html.xpath('//meta[@property="og:video:url" and @content]/@content'))
+            dataList = list(data)
+            dataList = dataList[-11:]
 
-        url = 'https://www.youtube.com/watch?v=' + ''.join(dataList)
+            url = 'https://www.youtube.com/watch?v=' + ''.join(dataList)
 
-        return url
+            return url
+
+    except:
+        return 'API has been restricted.'
