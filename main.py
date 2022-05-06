@@ -31,6 +31,7 @@ async def on_message(message):
         await message.channel.send('/hello : Say hello~ \n/random song : A random song from Spotify \n/今日运势 : 查看今日运势')
 
     elif message.content.startswith('/今日运势'):
-        await message.channel.send('今日运势: 【' + todaysFortune[random.randint(0,5)] + '】')
+        await message.channel.send('今日运势: 【' + todaysFortune[random.randint(0,5)] + '】\nLucky number today: 【' + random.randint(0,9) + '】')
+
 
 client.run(os.getenv('TOKEN'))
