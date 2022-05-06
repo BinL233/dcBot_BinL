@@ -3,11 +3,12 @@ import discord
 import os
 from dotenv import load_dotenv
 import get_spotify
+import random
 
 load_dotenv('TOKEN.env')
 client = discord.Client()
 
-
+todaysFortune = ['大吉','中吉','末吉','小吉','大凶','小凶']
 
 
 @client.event
@@ -27,6 +28,9 @@ async def on_message(message):
         await message.channel.send(rdsong)
 
     elif message.content.startswith('/help'):
-        await message.channel.send('/hello : Say hello~ \n/random song : A random song from Spotify')
+        await message.channel.send('/hello : Say hello~ \n/random song : A random song from Spotify \n/今日运势 : 查看今日运势')
+
+    elif message.content.startswith('/今日运势'):
+        await message.channel.send('今日运势: 【' + todaysFortune[random.randint(0,5)] + '】')
 
 client.run(os.getenv('TOKEN'))
