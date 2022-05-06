@@ -3,6 +3,7 @@ import discord
 import os
 from dotenv import load_dotenv
 import get_spotify
+import get_youtube
 import random
 
 load_dotenv('TOKEN.env')
@@ -28,10 +29,13 @@ async def on_message(message):
         await message.channel.send(rdsong)
 
     elif message.content.startswith('/help'):
-        await message.channel.send('/hello : Say hello~ \n/random song : A random song from Spotify \n/今日运势 : 查看今日运势')
+        await message.channel.send('/hello : Say hello~ \n/random song : A random song from Spotify \n/今日运势 : 查看今日运势 \n/random video : A random video from Youtube' )
 
     elif message.content.startswith('/今日运势'):
-        await message.channel.send('今日运势: 【' + todaysFortune[random.randint(0,5)] + '】\nLucky number today: 【' + random.randint(0,9) + '】')
+        await message.channel.send('今日运势: 【' + todaysFortune[random.randint(0,5)] + '】\nLucky number today: 【' + str(random.randint(0,9)) + '】')
 
+    elif message.content.startswith('/random video'):
+        rdvideo = get_youtube.get_url()
+        await message.channel.send(rdvideo)        
 
 client.run(os.getenv('TOKEN'))
