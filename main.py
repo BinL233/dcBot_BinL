@@ -5,6 +5,8 @@ from dotenv import load_dotenv
 import get_spotify
 import get_youtube
 import random
+from Server import keep_alive
+import get_course
 
 load_dotenv('TOKEN.env')
 client = discord.Client()
@@ -38,6 +40,10 @@ async def on_message(message):
     elif message.content.startswith('/random video'):
         rdvideo = get_youtube.get_url()
  
-        await message.channel.send(rdvideo)        
+        await message.channel.send(rdvideo)      
 
+    elif message.content.startswith('/c'):
+        pass
+
+keep_alive()
 client.run(os.getenv('TOKEN'))
