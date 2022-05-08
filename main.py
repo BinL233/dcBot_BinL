@@ -32,7 +32,7 @@ async def on_message(message):
         await message.channel.send(rdsong)
 
     elif message.content.startswith('!help'):
-        await message.channel.send('【!hello】 : Say hello~ \n【!random song】 : Random song from Spotify \n【!今日运势】 : 查看今日运势 \n【!random video】 : Random video from Youtube \n【!c + course code】 : Course information in Penn State.' )
+        await message.channel.send('【!hello】 : Say hello~ \n【!random song】 : Random song from Spotify \n【!今日运势】 : 查看今日运势 \n【!random video】 : Random video from Youtube \n【!c + course code】 : General Education courses information in Penn State.' )
 
     elif message.content.startswith('!今日运势'):
         await message.channel.send('今日运势: 【' + todaysFortune[random.randint(0,5)] + '】\nLucky number today: 【' + str(random.randint(0,9)) + '】')
