@@ -13,15 +13,15 @@ def get_course(name, code):
         datalist.append(html.xpath('/html/body/courseinfo/course/div[1]/div[1]/div[2]'))
         datalist.append(html.xpath('/html/body/courseinfo/course/div[2]/div[2]/div[2]/div[2]'))
         x=1
-        while x <= 4:
-            if html.xpath('/html/body/courseinfo/course/div[3]/div[2]/p[' + str(x) + ']') != None:
+        while x <= 10:
+            if html.xpath('/html/body/courseinfo/course/div[3]/div[2]/p[' + str(x) + ']') != []:
                 datalist.append(html.xpath('/html/body/courseinfo/course/div[3]/div[2]/p[' + str(x) + ']'))
                 x+=1
             else:
                 break
         
         i = 0
-        while i < len(datalist)-1:
+        while i < len(datalist):
             data += datalist[i][0].text.strip() + "\n"
             i+=1
         
@@ -30,4 +30,3 @@ def get_course(name, code):
 
     except:
         return 'API has been restricted.'
-
