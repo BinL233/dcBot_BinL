@@ -1,11 +1,13 @@
 # dcTestBot233
 
-**【!hello】 : Say hello~ **
+## Command
 
-**【!random song】 : Random song from Spotify (API restricted)**
+### 1.【!hello】 : Say hello~ 
 
-**【!今日运势】 : 查看今日运势 **
+### 2.【!random song】 : Random song from Spotify (API restricted)
 
-**【!random video】 : Random video from Youtube **
+### 3.【!今日运势】 : 查看今日运势 
 
-**【!c + course code】 : General Education courses information in Penn State.**
+### 4.【!random video】 : Random video from Youtube 
+
+### 5.【!c + course code】 : General Education courses information in Penn State.
