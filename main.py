@@ -27,7 +27,7 @@ async def on_message(message):
     if message.author == client.user:
         return
 
-    if message.content.startswith('!hello'):
+    if message.content.startswith('/hello'):
         await message.channel.send('Hello!')
 
     elif message.content.startswith('/random song'):
@@ -36,9 +36,9 @@ async def on_message(message):
         await message.channel.send(rdsong)
 
     elif message.content.startswith('!help'):
-        await message.channel.send('【!hello】 : Say hello~ \n【!random song】 : Random song from Spotify (API restricted)\n【!random video】 : Random video from Youtube \n【!c + course code】 : General Education courses information in Penn State.\n【!今日运势】 : 查看今日运势 \n【!签到】 : 签到\n【!推荐游戏】: 随机推荐游戏\n【!毒鸡汤】: 获取您今日份的毒鸡汤' )
+        await message.channel.send('【/hello】 : Say hello~ \n【/random song】 : Random song from Spotify (API restricted)\n【/random video】 : Random video from Youtube \n【/c + course code】 : General Education courses information in Penn State.\n【/今日运势】 : 查看今日运势 \n【/签到】 : 签到\n【/推荐游戏】: 随机推荐游戏\n【/毒鸡汤】: 获取您今日份的毒鸡汤' )
 
-    elif message.content.startswith('!今日运势'):
+    elif message.content.startswith('/今日运势'):
         yi = str(things[random.randint(0,len(things)-1)]) + '】'
         ji = str(things[random.randint(0,len(things)-1)]) + '】'
         while yi == ji:
@@ -48,11 +48,11 @@ async def on_message(message):
         '\n宜【' + yi+\
         '\n忌【' + ji)
 
-    elif message.content.startswith('!random video'):
+    elif message.content.startswith('/random video'):
         rdvideo = get_youtube.get_url()
         await message.channel.send(rdvideo)      
 
-    elif message.content.startswith('!c'):
+    elif message.content.startswith('/c'):
         strList = []
         intList = []
         content = list(message.content)[3:]
@@ -69,7 +69,7 @@ async def on_message(message):
         courseInfo = get_course.get_course(''.join(strList), ''.join(intList))
         await message.channel.send(courseInfo) 
             
-    elif message.content.startswith('!签到'):
+    elif message.content.startswith('/签到'):
         id = str(message.author.id)
         localtime = time.strftime("%d",time.localtime())
         print(localtime)
@@ -94,14 +94,14 @@ async def on_message(message):
                 value_sign = str(db[id][0])
                 await message.channel.send("签到成功！\n已签到【" + value_sign + "】天")
 
-    elif message.content.startswith('!推荐游戏'):
+    elif message.content.startswith('/推荐游戏'):
         with open("./VideoGames.csv") as f:
             reader = csv.reader(f)
             result = list(reader)
             result = result[random.randint(1,16718)]
             await message.channel.send("游戏名称:【 " + result[0] + " 】\n平台:【 " + result[1] + " 】\n发布日期:【 " + result[2] + " 】\n类型:【 " + result[3] + " 】\n发布者:【 " + result[4] + " 】")
 
-    elif message.content.startswith("!毒鸡汤"):
+    elif message.content.startswith("/毒鸡汤"):
         soup = get_tocxic_chick_soup.get_soup()
         await message.channel.send(soup)
 
