@@ -4,6 +4,7 @@ import os
 from dotenv import load_dotenv
 import get_spotify
 import get_youtube
+import get_tocxic_chick_soup
 import random
 from Server import keep_alive
 import get_course
@@ -35,7 +36,7 @@ async def on_message(message):
         await message.channel.send(rdsong)
 
     elif message.content.startswith('!help'):
-        await message.channel.send('【!hello】 : Say hello~ \n【!random song】 : Random song from Spotify (API restricted)\n【!random video】 : Random video from Youtube \n【!c + course code】 : General Education courses information in Penn State.\n【!今日运势】 : 查看今日运势 \n【!签到】 : 签到\n【!推荐游戏】: 随机推荐游戏' )
+        await message.channel.send('【!hello】 : Say hello~ \n【!random song】 : Random song from Spotify (API restricted)\n【!random video】 : Random video from Youtube \n【!c + course code】 : General Education courses information in Penn State.\n【!今日运势】 : 查看今日运势 \n【!签到】 : 签到\n【!推荐游戏】: 随机推荐游戏\n【!毒鸡汤】: 获取您今日份的毒鸡汤' )
 
     elif message.content.startswith('!今日运势'):
         yi = str(things[random.randint(0,len(things)-1)]) + '】'
@@ -99,6 +100,10 @@ async def on_message(message):
             result = list(reader)
             result = result[random.randint(1,16718)]
             await message.channel.send("游戏名称:【 " + result[0] + " 】\n平台:【 " + result[1] + " 】\n发布日期:【 " + result[2] + " 】\n类型:【 " + result[3] + " 】\n发布者:【 " + result[4] + " 】")
+
+    elif message.content.startswith("!毒鸡汤"):
+        soup = get_tocxic_chick_soup.get_soup()
+        await message.channel.send(soup)
 
 try:
     keep_alive()
