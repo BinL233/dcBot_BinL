@@ -2,18 +2,18 @@
 
 ## Command
 
-### 1.【!hello】 : Say hello~ 
+### 1.【/hello】 : Say hello~ 
 
-### 2.【!random song】 : Random song from Spotify (API restricted)
+### 2.【/random song】 : Random song from Spotify (API restricted)
 
-### 3.【!今日运势】 : 查看今日运势 
+### 3.【/今日运势】 : 查看今日运势 
 
-### 4.【!签到】 : 签到
+### 4.【/签到】 : 签到
 
-### 5.【!random video】 : Random video from Youtube 
+### 5.【/random video】 : Random video from Youtube 
 
-### 6.【!c + course code】 : General Education courses information in Penn State.
+### 6.【/c + course code】 : General Education courses information in Penn State.
 
-### 7.【!推荐游戏】: 随机推荐游戏
+### 7.【/推荐游戏】: 随机推荐游戏
 
-### 8.【!毒鸡汤] : 获取您今日份的毒鸡汤
+### 8.【/毒鸡汤] : 获取您今日份的毒鸡汤
