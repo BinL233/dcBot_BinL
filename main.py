@@ -35,7 +35,7 @@ async def on_message(message):
 
         await message.channel.send(rdsong)
 
-    elif message.content.startswith('!help'):
+    elif message.content.startswith('/help'):
         await message.channel.send('【/hello】 : Say hello~ \n【/random song】 : Random song from Spotify (API restricted)\n【/random video】 : Random video from Youtube \n【/c + course code】 : General Education courses information in Penn State.\n【/今日运势】 : 查看今日运势 \n【/签到】 : 签到\n【/推荐游戏】: 随机推荐游戏\n【/毒鸡汤】: 获取您今日份的毒鸡汤' )
 
     elif message.content.startswith('/今日运势'):
