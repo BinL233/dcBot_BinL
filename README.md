@@ -15,3 +15,5 @@
 ### 6.【!c + course code】 : General Education courses information in Penn State.
 
 ### 7.【!推荐游戏】: 随机推荐游戏
+
+### 8.【!毒鸡汤] : 获取您今日份的毒鸡汤
