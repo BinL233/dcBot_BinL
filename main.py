@@ -7,13 +7,14 @@ import get_youtube
 import random
 from Server import keep_alive
 import get_course
+from replit import db
+import time
 
 load_dotenv('TOKEN.env')
 client = discord.Client()
 
 todaysFortune = ['大吉','中吉','末吉','小吉','大凶','小凶']
-things = ['工作','学习','睡午觉','看番','看电影','打游戏','购物','秀恩爱','装逼','卖弱','考试','摸鱼','创作','战斗','寻找爱情','成为美少女','成为猛男','早睡','哼哼啊啊啊啊啊啊啊啊','搞基','百合','晚睡','锻炼','展示变态属性','手舂']
-
+things = ['工作','学习','睡午觉','看番','看电影','通宵','打游戏','购物','装逼','卖弱','考试','摸鱼','创作','战斗','寻找爱情','成为猛男','早睡','哼哼啊啊啊啊啊啊啊啊','晚睡','锻炼','手舂']
 
 @client.event
 async def on_ready():
@@ -33,7 +34,7 @@ async def on_message(message):
         await message.channel.send(rdsong)
 
     elif message.content.startswith('!help'):
-        await message.channel.send('【!hello】 : Say hello~ \n【!random song】 : Random song from Spotify (API restricted)\n【!今日运势】 : 查看今日运势 \n【!random video】 : Random video from Youtube \n【!c + course code】 : General Education courses information in Penn State.' )
+        await message.channel.send('【!hello】 : Say hello~ \n【!random song】 : Random song from Spotify (API restricted)\n【!今日运势】 : 查看今日运势 \n【!签到】 : 签到\n【!random video】 : Random video from Youtube \n【!c + course code】 : General Education courses information in Penn State.' )
 
     elif message.content.startswith('!今日运势'):
         yi = str(things[random.randint(0,len(things)-1)]) + '】'
@@ -66,6 +67,32 @@ async def on_message(message):
         courseInfo = get_course.get_course(''.join(strList), ''.join(intList))
         await message.channel.send(courseInfo) 
             
+    elif message.content.startswith('!签到'):
+        id = str(message.author.id)
+        localtime = time.strftime("%d, time.localtime()")
+        info = []
+        if id not in db.keys():
+            info.append("1")
+            info.append(localtime)
+            db[id] = info
+            
+        else:
+            if db[id][1] == localtime:
+                await message.channel.send("今日已经签到过了哟～\n签到天数:【" + db[id][0] + "】天")
+            else:
+                days = int(db[id])
+                days += 1
+                info.append(days)
+                info.append(localtime)
+                db[id] = info
+        
+                value_sign = db[id][0]
+                await message.channel.send("签到成功！\n已签到【" + value_sign + "】天")
 
-keep_alive()
-client.run(os.getenv('TOKEN'))
+try:
+    keep_alive()
+    client.run(os.getenv('TOKEN'))
+except discord.errors.HTTPException:
+    print("\n\n\nBLOCKED BY RATE LIMITS\nRESTARTING NOW\n\n\n")
+    os.system("python restarter.py")
+    os.system('kill 1')
