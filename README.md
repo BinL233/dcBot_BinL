@@ -8,6 +8,8 @@
 
 ### 3.【!今日运势】 : 查看今日运势 
 
-### 4.【!random video】 : Random video from Youtube 
+### 4.【!签到】 : 签到
 
-### 5.【!c + course code】 : General Education courses information in Penn State.
+### 5.【!random video】 : Random video from Youtube 
+
+### 6.【!c + course code】 : General Education courses information in Penn State.
