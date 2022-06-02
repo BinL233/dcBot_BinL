@@ -36,7 +36,7 @@ async def on_message(message):
         await message.channel.send(rdsong)
 
     elif message.content.startswith('/help'):
-        await message.channel.send('【/hello】 : Say hello~ \n【/random song】 : Random song from Spotify (API restricted)\n【/random video】 : Random video from Youtube \n【/c + course code】 : General Education courses information in Penn State.\n【/roll】 : roll\n【/今日运势】 : 查看今日运势 \n【/签到】 : 签到\n【/推荐游戏】: 随机推荐游戏\n【/毒鸡汤】: 获取您今日份的毒鸡汤' )
+        await message.channel.send('【/hello】 : Say hello~ \n【/random song】 : Random song from Spotify (API restricted)\n【/random video】 : Random video from Youtube \n【/c + course code】 : General Education courses information in Penn State.\n【/roll】 : Roll\n【/今日运势】 : 查看今日运势 \n【/签到】 : 签到\n【/推荐游戏】: 随机推荐游戏\n【/毒鸡汤】: 获取您今日份的毒鸡汤' )
 
     elif message.content.startswith('/今日运势'):
         yi = str(things[random.randint(0,len(things)-1)]) + '】'
@@ -79,11 +79,11 @@ async def on_message(message):
             info.append(localtime)
             db[id] = info
             value_sign = db[id][0]
-            await message.channel.send("签到成功！\n已签到【" + value_sign + "】天")
+            await message.channel.send("签到成功！\n已签到【 " + value_sign + " 】天")
             
         else:
             if db[id][1] == localtime:                
-                await message.channel.send("今日已经签到过了哟～\n签到天数:【" + db[id][0] + "】天")
+                await message.channel.send("今日已经签到过了哟～\n签到天数:【 " + str(db[id][0]) + " 】天")
             else:
                 days = int(db[id][0])
                 days += 1
@@ -92,7 +92,7 @@ async def on_message(message):
                 db[id] = info
         
                 value_sign = str(db[id][0])
-                await message.channel.send("签到成功！\n已签到【" + value_sign + "】天")
+                await message.channel.send("签到成功！\n已签到【 " + value_sign + " 】天")
 
     elif message.content.startswith('/推荐游戏'):
         with open("./VideoGames.csv") as f:
